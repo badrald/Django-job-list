@@ -8,8 +8,9 @@ JOB_TYEP=(
      )
 
 class Category(models.Model):
-    name=models.CharField(max_length=15)
-    
+    name=models.CharField(max_length=25)
+    def __str__(self) -> str:
+        return self.name
     class Meta:
         db_table = ''
         managed = True
@@ -24,6 +25,7 @@ class Job(models.Model):
     vecancy= models.SmallIntegerField(default=1)
     salary=models.IntegerField(default=0)
     experience=models.SmallIntegerField(default=0)
+    photo=models.ImageField(upload_to='jobs/', height_field=None, width_field=None, max_length=None)
     category=models.ForeignKey(Category,name='category',on_delete=models.CASCADE)
     def __str__(self):
         return self.title
