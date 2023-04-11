@@ -49,6 +49,7 @@ class Job(models.Model):
         get_latest_by ='-published_at'
 
 
+
 class Apply(models.Model):
     user=models.ForeignKey(User,related_name='apply_user',on_delete=models.CASCADE)
     job=models.ForeignKey(Job,related_name='apply_job',on_delete=models.CASCADE)
