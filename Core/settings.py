@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Funcational app
     'job','home','accounts','blog','contact',
+    "django_bootstrap5",
+
 ]
 
 MIDDLEWARE = [
