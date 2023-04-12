@@ -10,6 +10,7 @@ from django.urls import reverse
 from django.core.paginator import Paginator
 # Create your views here.
 
+# Browse jobs funcation
 def job_list(request):
     jobs=Job.objects.all()
     categories=Category.objects.all()
@@ -20,6 +21,7 @@ def job_list(request):
 
     return render(request,'jobs.html',context)
 
+# Details page 
 def job_detail(request,slug):
     job=get_object_or_404(Job,slug=slug)
     if request.method == "POST":
@@ -32,9 +34,11 @@ def job_detail(request,slug):
     apply=ApplyForm()
     context={'job':job,'form':apply}
     return render(request,'job_details.html',context)
-    
+
+# Needed to be login in to continue   
 @login_required
 def add_job(request):
+
     form=JobForm()
     if request.method == "POST":
         form=JobForm(request.POST,request.FILES)
@@ -42,7 +46,6 @@ def add_job(request):
             myform=form.save(commit=False)
             myform.owner=request.user
             myform.save()
-            print('Done :)')
             slug=Job.objects.latest('published_at').slug
             return redirect("job:job_detail",slug)
 
