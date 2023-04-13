@@ -53,6 +53,8 @@
 
                     </div>
                     <div class="apply_job_form white-bg">
+                        
+                        {% if request.user != job.owner%}
                         <h4>Apply for the job</h4>
                         <form action="." method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
@@ -60,6 +62,10 @@
                             <button class="boxed-btn3 w-100" type="submit">Apply Now</button>
         
                         </form>
+                        {% else %}
+                        <a class="boxed-btn3 w-25 mt-5" href="{% url 'job:edit_job' job.id %}" type="submit">Edit </a>
+                        <a class="boxed-btn3 w-25 mt-5 bg-danger " href="#" type="submit">Delete</a>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-lg-4">

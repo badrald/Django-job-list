@@ -3,7 +3,7 @@ from .models import Job,Category
 
 from django.contrib.auth.decorators import login_required
 
-from .form import ApplyForm,JobForm
+from .form import ApplyForm,JobForm,EditJobForm
 
 from django.urls import reverse
 
@@ -39,6 +39,7 @@ def job_detail(request,slug):
 @login_required
 def add_job(request):
 
+
     form=JobForm()
     if request.method == "POST":
         form=JobForm(request.POST,request.FILES)
@@ -51,3 +52,18 @@ def add_job(request):
 
     context={"form":form}
     return render(request,'add_job.html',context)
+
+        
+@login_required
+def edit(request,id):
+    item = get_object_or_404(Job,id=id,owner=request.user)
+
+    if request.method == 'POST':
+        form = EditJobForm(request.POST, request.FILES,instance=item)
+        if form.is_valid():
+            form.save()
+            print("I'm Here : ) ")
+            return redirect('job:job_detail',item.slug)
+    else:
+        form = EditJobForm(instance=item)
+    return render(request,"edit_job.html",{'form':form,'title':'Edit '})
