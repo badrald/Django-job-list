@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import authenticate,login
+from django.contrib.auth.decorators import login_required
 from .form import SignUpForm,EditProfileForm
 from .models import Profile
 # Create your views here.
@@ -22,7 +23,7 @@ def profile(request):
     return render(request,'accounts/profile.html',{"profile":profile})
 
 @login_required
-def edit(request):
+def profile_edit(request):
     profile = get_object_or_404(Profile,owner=request.user)
 
     if request.method == 'POST':

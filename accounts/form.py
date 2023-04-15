@@ -16,4 +16,4 @@ class SignUpForm(UserCreationForm):
 class EditProfileForm(forms.ModelForm):
     class Meta:
         model=Profile
-        fileds = '__all__'
+        fields = '__all__'
