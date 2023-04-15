@@ -14,14 +14,16 @@ def upload_pics(inctence,pic):
 class Profile(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     country=CountryField(null=True,blank=True)
+    city= models.CharField(max_length=50, blank=True, null=True)
     phone_number=models.CharField(max_length=15,null=True,blank=True)
     image=models.ImageField(upload_to=upload_pics,null=True,blank=True)
+    profession=  models.CharField(max_length=50, blank=True, null=True)
     first_name=models.CharField(max_length=50)
     last_name=models.CharField(max_length=50)
     WebsiteUrl=models.URLField(null=True,blank=True)
     GithubUrl=models.URLField(null=True,blank=True)
     TwitterUrl=models.URLField(null=True,blank=True)
-    InstagramUrl=models.URLField(null=True,blank=True)
+    LinkeInUrl=models.URLField(null=True,blank=True)
     FacebookUrl=models.URLField(null=True,blank=True)
 
     def __str__(self) :

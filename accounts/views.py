@@ -24,14 +24,20 @@ def profile(request):
 
 @login_required
 def profile_edit(request):
-    profile = get_object_or_404(Profile,owner=request.user)
+    profile = get_object_or_404(Profile,user=request.user)
 
     if request.method == 'POST':
         form = EditProfileForm(request.POST, request.FILES,instance=profile)
         if form.is_valid():
             form.save()
-            return redirect('job:job_detail',item.slug)
+            print(' done save  ')
+            return redirect('accounts:profile')
     else:
         form = EditProfileForm(instance=profile)
-    return render(request,"edit_job.html",{'form':form,'title':'Edit '})
+    return render(request,"accounts/profile_edit.html",{'form':form,'pic':profile.image,'title':'Edit Profile'})
+
+
+def candidates(request):
+    pass
+    
     
