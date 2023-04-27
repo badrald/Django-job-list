@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 {% block content %}
+<style>
+    .dropdown-menu {
+      max-height: 200px;
+      overflow-y: auto;
+    }
+  </style>
   <!-- bradcam_area  -->
     <div class="bradcam_area bradcam_bg_1">
         <div class="container">
@@ -35,9 +41,11 @@
                 <div class="card mb-4">
                     <div class="card-header">Account Details</div>
                     <div class="card-body">
-                        <form method='POST' >
+                        <form method='POST' enctype="multipart/form-data" >
                             {% csrf_token %}
-                            {% bootstrap_form form %}
+                            {% bootstrap_form form1 %}
+                            {{ form2.country  }}
+                            {% bootstrap_form form2 exclude='country' %}
                             <button class="btn btn-primary" type="submit">Save changes</button>
                         </form>
             </div>
@@ -45,5 +53,6 @@
 </div>
 </div>
 </div>
+
 {% endblock content %}
 

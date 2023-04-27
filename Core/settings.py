@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_countries',
+    'django_filters',
     # Funcational app
     'job','home','blog','contact',
     "django_bootstrap5",

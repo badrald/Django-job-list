@@ -9,5 +9,6 @@ urlpatterns = [
     path('add/',views.add_job,name='add_job'),
     path('<str:slug>/',views.job_detail,name='job_detail'), 
     path('edit/<int:id>',views.edit,name='edit_job'),
+    path('<str:slug>',views.delete_job,name='delete_job')
 ]
     

@@ -53,15 +53,10 @@
                                         <ul id="navigation">
                                             <li><a href="{% url 'home:index' %}">home</a></li>
                                             <li><a href="{% url 'job:job_list' %}">Browse Job</a></li>
-                                            <li><a href="candidate.html">Candidates </a></li>
-                                            
-                                            <li><a href="#">blog <i class="ti-angle-down"></i></a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">blog</a></li>
-                                                    <li><a href="single-blog.html">single-blog</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="{% url 'accounts:candidates' %}">Candidates </a></li>
+                                            <li><a href="{% url 'accounts:companies' %}">Companies </a></li> 
+                                            <li><a href="{% url 'blog:blogs' %} ">blogs </a> </li>
+                                            <li><a href="{% url 'new_message' %}">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -79,6 +74,8 @@
                                         <a class="boxed-btn3" href="{% url 'job:add_job' %}">Post a Job</a>
                                         {% if user.is_authenticated  %}
                                         <a class="boxed-btn3 bg-danger ml-1" href="{% url 'accounts:profile' %}">Profile</a>
+                                        {% else %}
+                                        <a class="boxed-btn3 bg-danger ml-1" href="{% url 'accounts:signup' %}">SignUp</a>
                                         {% endif %}
                                     </div>
                                 </div>

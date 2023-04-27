@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User 
+from accounts.models import Company
 # Create your models here.
 
 JOB_TYEP=(
@@ -34,6 +35,7 @@ class Job(models.Model):
     photo=models.ImageField(upload_to=upload_pics, height_field=None, width_field=None, max_length=None)
     category=models.ForeignKey(Category,name='category',on_delete=models.CASCADE)
     slug= models.SlugField(null=True,blank=True)
+    company=models.ForeignKey(Company,related_name='companyName',on_delete=models.CASCADE)
 
     def save(self,*args, **kwargs):
         self.slug=slugify(self.title)

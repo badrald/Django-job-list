@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load django_bootstrap5 %}
+
+{% block content %}
+  <!-- bradcam_area  -->
+  <div class="bradcam_area bradcam_bg_1">
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-12">
+                  <div class="bradcam_text">
+                      <h3>Create Blog</h3>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!--/ bradcam_area  -->
+
+   <!--================Blog Area =================-->
+   <section class="blog_area single-post-area section-padding">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-8 posts-list mx-auto">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                       {% bootstrap_form form %}
+                       <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn mt-5"
+                       type="submit">Post Now </button>
+                    </form>
+
+               </div>
+
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--================ Blog Area end =================--> 
+{% endblock content %}
